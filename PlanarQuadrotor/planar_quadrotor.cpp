@@ -7,9 +7,14 @@ PlanarQuadrotor::PlanarQuadrotor() {
     std::random_device r;
     std::default_random_engine generator(r());
     std::normal_distribution<float> distribution(0.0, 1.0);
-    auto gaussian = [&] (int) {return distribution(generator);};
+    auto gaussian = [&] (int) {return distribution(generator);}; //nie rozumiem po co to jest
 
     z = Eigen::VectorXf::NullaryExpr(6, gaussian);
+    // const int SCREEN_WIDTH = 1280;
+    // const int SCREEN_HEIGHT = 720;
+    // z[0]=SCREEN_WIDTH/2;
+    // z[1]=SCREEN_HEIGHT/2;
+    std::cout << z[0] << std::endl << z[1] << std::endl << z[2] << std::endl;
 }
 
 PlanarQuadrotor::PlanarQuadrotor(Eigen::VectorXf z): z(z) {}
